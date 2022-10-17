@@ -1,0 +1,223 @@
+*{
+  margin: 0;
+}
+
+.background-img{
+  widht: 100%;
+  height: 775px;
+  background: url('https://www.highsnobiety.com/static-assets/thumbor/6TaPa0r6jQ8xP_oYNuISNdFhVZE=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2019/09/12121234/post-malone-apocalypse-bunker-01.jpg');
+  background-position: center 1%;
+}
+
+header{
+  font-size: 38px;
+  font-family: 'Oswald';
+  color: #fafafa;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 1300px;
+  padding-top: 30px;
+  padding-left: 180px;
+}
+
+header ul{
+  list-style: none;
+}
+
+header li{
+  display: inline;
+}
+
+.r-link{
+  margin-right: 60px;
+}
+header img{
+  width: 300px;
+  height: 128px;
+  margin: 0 72px;
+}
+
+nav{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 1365px;
+  height: 114px;
+  border-bottom: 2px solid black;
+  margin-top: 10px;
+}
+
+nav .anchors{
+  font-family: 'Raleway';
+  font-size: 30px;
+  padding: 39px 0 39px 130px ;
+}
+
+.link-mitad{
+  margin: 0 30px;
+}
+
+nav .anchors a{
+  text-decoration: none;
+  color: #000;
+}
+
+h4{
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.filtro{
+  font-family: 'Raleway';
+  font-size: 30px;
+  padding-left: 359px;
+  padding-right: 262px;
+}
+
+.productos{
+  display: flex;
+  width: 100%;
+  height: 740px;
+  margin-top: 105px;
+  border-bottom: 3px solid black;
+}
+
+.productos img{
+  width: 600px;
+  height: 590px;
+  margin-left: 98px;
+  margin-right: 50px; 
+}
+
+.productos a{
+  border: 4px solid black;
+  font-family: 'Raleway';
+  font-weight: 500;
+  color: black;
+  display: block;
+  text-decoration: none;
+  font-size: 38px;
+  width: 244px;
+  padding: 19px 35px 19px 60px;
+  margin-bottom: 32px;
+  margin-left: 95px;
+}
+
+.productos button{
+  border: none;
+  font-family: 'Raleway';
+  font-weight: 500;
+  color: white;
+  background: black;
+  display: block;
+  font-size: 38px;
+  width: 350px;
+  height: 82px;
+  margin-left: 95px;
+}
+
+.productos h6{
+  font-size: 53px;
+  font-family: 'Racing Sans One';
+  margin-bottom: 72px;
+}
+
+.productos h1{
+  text-align: center;
+  font-size: 53px;
+  font-family: 'Racing Sans One';
+  margin-bottom: 72px;
+  margin-left: 90px;
+}
+
+.productos div{
+  padding-top: 82px;
+  align-content: center;
+}
+
+footer{
+  position: relative;
+  font-family: 'Raleway';
+  width: 100%;
+  height: 630px;
+  background: #282725;
+}
+
+.imgText{
+  padding-top: 85px;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
+  font-size : 45px;
+  color: white;
+}
+
+.imgText img{
+  display: inline-block;
+  margin-right: 75px;
+}
+
+.imgText h5{
+  font-weight: 400;
+}
+
+.email{
+  display: inline-block;
+  margin-top: 60px;
+  margin-left: 140px;
+  color: white;
+  width: 585px;
+  height: 178px;
+  font-family: 'Raleway';
+}
+
+.email input{
+  width: 450px;
+  background: transparent;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 3px solid white;
+  font-size: 30px;
+  color: white;
+  font-weight: 400;
+  font-family: 'Raleway';
+  padding-bottom: 15px;
+}
+
+.email h5{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.socials{
+  position: absolute;
+  left: 835px;
+  bottom: 225px;
+  width: 295px;
+  height: 132px;
+}
+
+.socials h5{
+  font-size: 40px;
+  margin-bottom: 40px;
+  color: white;
+}
+
+
+.instagram{
+  margin: 0 20px;
+  width: 48px;
+  height: 48px;
+}
+
+.twitter{
+  width: 52px;
+  height: 50px;
+}
+
+.facebook{
+  width: 54px;
+  height: 54px;
+}
