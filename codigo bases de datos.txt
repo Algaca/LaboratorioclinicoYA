@@ -1,0 +1,197 @@
+CREATE TABLE `aseguradoras` (
+	`Aseg_Id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Aseg_Nit` INT(10) UNSIGNED NOT NULL,
+	`Aseg_Nom` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Aseg_Dir` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Aseg_Tel` INT(10) UNSIGNED NOT NULL,
+	`Aseg_Email` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Aseg_Id`) USING BTREE,
+	UNIQUE INDEX `Aseg_Nit` (`Aseg_Nit`) USING BTREE,
+	UNIQUE INDEX `Aseg_Nom` (`Aseg_Nom`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=3
+;
+CREATE TABLE `cargo` (
+	`Cargo_Id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Nom_cargo` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Cargo_Id`) USING BTREE,
+	UNIQUE INDEX `Nom_cargo` (`Nom_cargo`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+;
+CREATE TABLE `contratos` (
+	`Cont_Id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Cont_Nombre` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Cont_Niteps` INT(10) UNSIGNED NOT NULL,
+	`Cont_Nomeps` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Cont_fechdesde` DATE NOT NULL,
+	`Cont_fechhasta` DATE NOT NULL,
+	PRIMARY KEY (`Cont_Id`) USING BTREE,
+	UNIQUE INDEX `Cont_Niteps` (`Cont_Niteps`) USING BTREE,
+	UNIQUE INDEX `Cont_Nomeps` (`Cont_Nomeps`) USING BTREE,
+	CONSTRAINT `FK_contratos_aseguradoras` FOREIGN KEY (`Cont_Niteps`) REFERENCES `aseguradoras` (`Aseg_Nit`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_contratos_aseguradoras_2` FOREIGN KEY (`Cont_Nomeps`) REFERENCES `aseguradoras` (`Aseg_Nom`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `entregaresultados` (
+	`Entre_Id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Fecha` DATE NOT NULL,
+	`Entre_Doc` INT(10) UNSIGNED NOT NULL,
+	`Entre_Nom` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Entre_Id`) USING BTREE,
+	UNIQUE INDEX `Entre_Doc` (`Entre_Doc`) USING BTREE,
+	UNIQUE INDEX `Entre_Nom` (`Entre_Nom`) USING BTREE,
+	CONSTRAINT `FK_entregaresultados_usuarios` FOREIGN KEY (`Entre_Doc`) REFERENCES `usuarios` (`Usu_Doc`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `facturacion` (
+	`Num_fact` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Fact_doc` INT(10) UNSIGNED NOT NULL,
+	`Fact_Nom` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Fact_Fecha` DATE NOT NULL,
+	`Fact_Aseg` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Fact_Codpro` INT(10) UNSIGNED NOT NULL,
+	`Fact_Proc` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Fact_Valor` INT(10) UNSIGNED NOT NULL,
+	`Fact_cont` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Num_fact`) USING BTREE,
+	UNIQUE INDEX `Fact_doc` (`Fact_doc`) USING BTREE,
+	UNIQUE INDEX `Fact_Nom` (`Fact_Nom`) USING BTREE,
+	UNIQUE INDEX `Fact_Aseg` (`Fact_Aseg`) USING BTREE,
+	UNIQUE INDEX `Fact_Codpro` (`Fact_Codpro`) USING BTREE,
+	UNIQUE INDEX `Fact_Proc` (`Fact_Proc`) USING BTREE,
+	CONSTRAINT `FK_facturacion_aseguradoras` FOREIGN KEY (`Fact_Aseg`) REFERENCES `aseguradoras` (`Aseg_Nom`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_facturacion_procedimientos` FOREIGN KEY (`Fact_Proc`) REFERENCES `procedimientos` (`Proc_Nombre`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_facturacion_procedimientos_2` FOREIGN KEY (`Fact_Codpro`) REFERENCES `procedimientos` (`Proc_Cod`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_facturacion_usuarios` FOREIGN KEY (`Fact_doc`) REFERENCES `usuarios` (`Usu_Doc`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `laboratorio` (
+	`Lab_Id` SMALLINT(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Lab_Nit` INT(10) UNSIGNED NOT NULL,
+	`Lab_RazonSocial` VARCHAR(60) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Lab_Direccion` VARCHAR(60) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Lab_Pais` TINYINT(3) UNSIGNED NOT NULL,
+	`Lab_Departamento` SMALLINT(5) UNSIGNED NOT NULL,
+	`Lab_Municipio` MEDIUMINT(7) UNSIGNED NOT NULL,
+	`Lab_Telefono` INT(10) UNSIGNED NOT NULL,
+	`Lab_Email` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Lab_Id`) USING BTREE,
+	UNIQUE INDEX `Lab_Nit` (`Lab_Nit`) USING BTREE,
+	INDEX `Lab_Pais` (`Lab_Pais`) USING BTREE,
+	INDEX `Lab_Departamento` (`Lab_Departamento`) USING BTREE,
+	INDEX `Lab_Municipio` (`Lab_Municipio`) USING BTREE
+)
+COMMENT='Crea la empresa'
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
+CREATE TABLE `procedimientos` (
+	`Proc_Id` MEDIUMINT(7) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Proc_Cod` INT(10) UNSIGNED NOT NULL,
+	`Proc_Nombre` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Proc_Precio` INT(10) NOT NULL,
+	PRIMARY KEY (`Proc_Id`) USING BTREE,
+	UNIQUE INDEX `Proc_Cod` (`Proc_Cod`) USING BTREE,
+	UNIQUE INDEX `Proc_Nombre` (`Proc_Nombre`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `representante legal` (
+	`Rep_Id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Rep_Emp` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Rep_Doc` INT(10) UNSIGNED NOT NULL,
+	`Rep_Nombre` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Rep_Dir` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Rep_Tel` INT(10) NOT NULL,
+	`Rep_Email` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Rep_Fechainicio` DATE NOT NULL,
+	PRIMARY KEY (`Rep_Id`) USING BTREE,
+	UNIQUE INDEX `Rep_Doc` (`Rep_Doc`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `roles` (
+	`Rol_Id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Roles_sis` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Rol_Id`) USING BTREE,
+	UNIQUE INDEX `Roles_sis` (`Roles_sis`) USING BTREE
+)
+COMMENT='Roles del sistema'
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=4
+;
+CREATE TABLE `tipomuestras` (
+	`Tipo_Id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Tipo_mues` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Tipo_Fecha` DATE NOT NULL,
+	PRIMARY KEY (`Tipo_Id`) USING BTREE,
+	UNIQUE INDEX `Tipo_mues` (`Tipo_mues`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `tomamuestras` (
+	`Toma_Id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Toma_IdUsu` INT(10) UNSIGNED NOT NULL,
+	`Toma_nomb` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Toma_Muestra` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Toma_Id`) USING BTREE,
+	UNIQUE INDEX `Toma_IdUsu` (`Toma_IdUsu`) USING BTREE,
+	INDEX `FK_tomamuestras_tipomuestras` (`Toma_Muestra`) USING BTREE,
+	CONSTRAINT `FK_tomamuestras_tipomuestras` FOREIGN KEY (`Toma_Muestra`) REFERENCES `tipomuestras` (`Tipo_mues`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_tomamuestras_usuarios` FOREIGN KEY (`Toma_IdUsu`) REFERENCES `usuarios` (`Usu_Doc`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+;
+CREATE TABLE `usuarios` (
+	`Usu_Id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Usu_Doc` INT(10) UNSIGNED NOT NULL,
+	`Usu_Nomb` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Usu_Dir` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Usu_Tel` INT(10) UNSIGNED NOT NULL,
+	`Usu_Dep` SMALLINT(5) NOT NULL,
+	`Usu-Mun` MEDIUMINT(7) NOT NULL,
+	PRIMARY KEY (`Usu_Id`) USING BTREE,
+	UNIQUE INDEX `Usu_Doc` (`Usu_Doc`) USING BTREE,
+	INDEX `Usu_Dep` (`Usu_Dep`) USING BTREE,
+	INDEX `Usu-Mun` (`Usu-Mun`) USING BTREE
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
+CREATE TABLE `usuariosistema` (
+	`Usis_Id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`Usis_Doc` INT(10) UNSIGNED NOT NULL,
+	`Usis_Nomb` VARCHAR(200) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Usis_Rol` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Usis_Dir` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`Usis_Tel` INT(10) NOT NULL,
+	`Usis_Cargo` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`Usis_Id`) USING BTREE,
+	UNIQUE INDEX `Usis_Doc` (`Usis_Doc`) USING BTREE,
+	UNIQUE INDEX `Usis_Rol` (`Usis_Rol`) USING BTREE,
+	INDEX `FK_usuariosistema_cargo` (`Usis_Cargo`) USING BTREE,
+	CONSTRAINT `FK_usuariosistema_cargo` FOREIGN KEY (`Usis_Cargo`) REFERENCES `cargo` (`Nom_cargo`) ON UPDATE NO ACTION ON DELETE NO ACTION,
+	CONSTRAINT `FK_usuariosistema_roles` FOREIGN KEY (`Usis_Rol`) REFERENCES `roles` (`Roles_sis`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_0900_ai_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=2
+;
