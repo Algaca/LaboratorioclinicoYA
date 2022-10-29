@@ -1,0 +1,29 @@
+/*
+globales
+*/
+
+@import url('http:fonts.googleapis.com/css2? family=montserrat&display=swap');
+
+body {
+    font-family: 'montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+header p {
+    font-size: 150%
+    }
+
+/*
+slider de imagenes
+*/
+.carousel-inner > .item > img {
+    height: 30px;
+}
+
+.politica-fila {
+    text-align:center;
+}
+
+.politica-calidad {
+    text-align:center;
+}

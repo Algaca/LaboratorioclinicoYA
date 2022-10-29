@@ -1,12 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaboratorioClinicoYa</title>
-</head>
-<body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
-</body>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css">
+   
+    <title>LaboratorioclinicoYa</title>
+  </head>
+  <body>
+
+    <!--------------------------------->
+    <!--Encabezado-->
+    <!--------------------------------->
+    <header  class="container-fluid bg-info">
+      <p>
+        <img src="./imagenes/logo.jpg"> 
+          +057-300-xxxxxxx
+      </p>
+
+    </header>
+
+    <!--------------------------------->
+    <!--Slider de imagenes-->
+    <!--------------------------------->
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class= "carousel-inner" >
+        <div class="carousel-item active">
+          <img src="./imagenes/slider1.jpg" class="d-block w-100" alt="slider1">
+        </div>
+        <div class="carousel-item">
+          <img src="./imagenes/slider2.jpg" class="d-block w-100" alt="slider2">
+        </div>
+        <div class="carousel-item">
+          <img src="./imagenes/slider3.jpg" class="d-block w-100" alt="slider3">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!--------------------------------->
+    <!--INFO-->
+    <!--------------------------------->
+
+    <section class=" mx-auto text-center pt-5" id="intro">
+      <h1 class="p-3 fs-2">Somos la mejor opcion en laboratorios clinicos de colombia
+      </h1>
+      <p><span class="text-primary"> Laboratorio Clinico Ya: </span> es el laboratorio clinico que llegó a brindarte el merjor servio, de manera agil, confiable. Pensando en tu comodidad y confort, traemos el servicio de citas a tu mano.
+
+      </p>
+    </section>
+
+    <!--------------------------------->
+    <!--Politica-->
+    <!--------------------------------->
+
+    <section class="container-fluid">
+      <div class="row politica-fila">
+        <div class="col d-flex justify-content-star">
+        <img src="./imagenes/polcalidad-2.jpg" alt="polcalidad" width = "2180"> 
+        <div class="row politica-calidad" id="">
+          <h3 class="text-primary"> POLÍTICA DE CALIDAD</h3>
+          <p class="fs-8 mt-4 px-4 pb-1">
+            LABORATORIO CLÍNICO YA ESTÁ COMPROMETIDO CON LA SALUD PROPORCIONANDO RESULTADOS CONFIABLES Y OPORTUNOS PARA SUS USUARIOS; PARA LA CUAL CUENTA CON UN EQUIPO HUMANO Y QUE CUMPLE CON ALTOS ESTANDARES DE CALIDAD. 
+          </p>
+        </div>
+        </div>        
+      </div>
+
+    </section>
+
+    <!--------------------------------->
+    <!--FORMULARIO-->
+    <!--------------------------------->
+
+    <div class="row">
+      <div class="col">
+        <form class=" mx-auto text-center pt-5">
+          <fieldset enabled>
+            <legend>Agenda tu cita con nosotros</legend>
+            <div class="mb-3">
+              <label for="disabledSelect" class="form-label">Examen a Realizar</label>
+              <select id="disabledSelect" class="form-select">
+                <option>Hemograma completo</option>
+                <option>Urinálisis completo</option>
+                <option>Heces por parásito, sangre oculta</option>
+                <option>Perfil lipídico: Colesterol, LDL; HDL; triglicérido</option>
+                <option>Perfil hepático: Bilirrubina, total y directa, AST, LDH</option>
+                <option>Perfil triode: TSH, T3, T4</option>
+                <option>Panel básico metabólico: Electrolitos, glucosa, nitrógeno de urea,creatinina</option>
+              </select>
+            </div>
+    
+            <a class="btn btn-primary" href="citamedica.html">Agendar cita</a>
+          </fieldset>
+
+          <br>
+
+
+        </form>
+
+
+      </div>
+      <div class="col"></div>
+
+
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+  </body>
 </html>
